@@ -20,7 +20,7 @@ class BytePairEncoder:
     def encoder(self,text:str):
 
 
-        tokens=self.tokeniser.encode(text,allowed_special={"<|endoftext|"})
+        tokens=self.tokeniser.encode(text,allowed_special={"<|endoftext|>"})
 
         return tokens
     
