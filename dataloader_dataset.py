@@ -58,11 +58,13 @@ class DataSet(Dataset):
             for i in range(1,len(encoded_data)-self.context_sz,self.stride):
 
                 input=encoded_data[i:i+self.context_sz]
-                output=encoded_data[i+self.context_sz]
+                output=[encoded_data[i+self.context_sz]]
 
                 self.target_pairs_manual.extend((input,output))
                 self.input_ids.append(torch.tensor(input))
                 self.output_ids.append(torch.tensor(output))
+                # print(type(input) ,"  ", type(output))
+                print(f"{self._decode(input)} ----> {self._decode(output)}")
     
     def __len__(self):
         return len(self.input_ids)
@@ -76,7 +78,7 @@ class Dataloader():
 
     def __init__(self,batch_sz=None,context_sz=4,shuffle=True,drop_last=False,num_workers=5):
 
-        self.dataset=DataSet("the-verdict.txt",context_sz=3,stride=1)
+        self.dataset=DataSet("the-verdict.txt",context_sz=9,stride=1)
 
         self.dataloader=DataLoader(self.dataset,3,False,drop_last=True,num_workers=6)
 

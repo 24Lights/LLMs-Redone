@@ -61,6 +61,7 @@ class DL():
 
     def __init__(self):
         dataset=DS(8,4,True,"the-verdict.txt")
+        
         self.vocab_sz=dataset.get_vocabSZ()
         loader=DataLoader(dataset,2,shuffle=False,num_workers=8,drop_last=True)
         self.dl_iterator=iter(loader)
@@ -134,6 +135,7 @@ class PositionalEmbeddings():
         res=[]
         print("------------------\n","added pos embeddings are : ",len(self.pos_embeddings),"\n")
         for batch in token_embeddings:
+            print("batch type  ",batch.shape,self.pos_embeddings.shape)
             res.append(batch+self.pos_embeddings)
 
         print(type(token_embeddings),type(self.pos_embeddings))
