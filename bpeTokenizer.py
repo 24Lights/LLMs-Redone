@@ -16,6 +16,8 @@ class BytePairEncoder:
 
     def __init__(self):
         self.tokeniser=tiktoken.get_encoding("gpt2")
+        self.gpt3tokeniser=tiktoken.get_encoding("p50k_base")
+        self.gpt4tokeniser=tiktoken.get_encoding("cl100k_base")
     
     def encoder(self,text:str):
 
