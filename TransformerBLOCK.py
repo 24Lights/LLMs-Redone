@@ -329,9 +329,10 @@ class Processor(torch.nn.Module):
             token_embeds=self.preprocessor.token_embedding(batch_in)
             pos_embeds=self.preprocessor.position_embedding(token_embeds)
 
-            trans_out_1=self.transformer(token_embeds)
+            trans_out_1=self.transformer(pos_embeds)
 
             print(f"Batch {i} --> INPUT Shape {batch_in.shape}")
+            print(f"Batch {i} --> TRANS_IN Shape {pos_embeds.shape}")
             print(f"Batch {i} --> TRANS_OUT Shape {trans_out_1.shape}")
 
 
